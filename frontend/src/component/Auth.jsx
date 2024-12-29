@@ -56,14 +56,17 @@ const Auth = () => {
       localStorage.setItem("userEmail", signupData.email); // Store email in localStorage
       setTimeout(() => {
         navigate('/home'); // Navigate to Home after successful login
-      }, 700);
-
+      }, 100);
+      setSignUpError('Wait...');
+      setTimeout(() => {
+        setSignUpError('')
+      }, 1500);
      
     } catch (error) {
       setSignUpError('Email already exists. Please sign up with a different email.');
       setTimeout(() => {
         setSignUpError('')
-      }, 2000);
+      }, 1500);
       console.log('User creation failed', error);
     }
   };
@@ -79,13 +82,13 @@ const Auth = () => {
         localStorage.setItem("userEmail", loginData.email); // Store email in localStorage
         setTimeout(() => {
           navigate('/home'); // Navigate to Home after successful login
-        }, 400);
+        }, 100);
    
     } catch (error) {
       setLoginError('Invalid credentials. Please check your email and password or sign up if you don&apos;t have an account.');
       setTimeout(() => {
         setLoginError('')
-      }, 2000);
+      }, 1500);
       console.log('Login failed', error);
     }
   };
