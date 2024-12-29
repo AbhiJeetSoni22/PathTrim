@@ -66,7 +66,7 @@ const Auth = () => {
       setSignUpError('Email already exists. Please sign up with a different email.');
       setTimeout(() => {
         setSignUpError('')
-      }, 1500);
+      }, 2000);
       console.log('User creation failed', error);
     }
   };
@@ -88,7 +88,7 @@ const Auth = () => {
       setLoginError('Invalid credentials. Please check your email and password or sign up if you don&apos;t have an account.');
       setTimeout(() => {
         setLoginError('')
-      }, 1500);
+      }, 2000);
       console.log('Login failed', error);
     }
   };
