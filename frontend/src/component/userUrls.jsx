@@ -105,7 +105,7 @@ const UserUrls = () => {
               <ul className="pl-5 space-y-2 list-disc">
                 {urls.map((url) => (
                   <li key={url._id} className="text-gray-800">
-                    <span className="font-semibold block">Long URL:</span>{" "}
+                    <span className="font-semibold block">Your URL:</span>{" "}
                     <a
                       href={url.longUrl}
                       target="_blank"
