@@ -1,0 +1,27 @@
+{
+  "name": "short_url",
+  "version": "1.0.0",
+  "description": "this is website for giving short url for the given url",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node./index.js",
+    "code": "nodemon ./index.js "
+  },
+  "keywords": [
+    "backend",
+    "javascript"
+  ],
+  "author": "Abhijeet Soni",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.2",
+    "nanoid": "^5.0.9",
+    "nodemon": "^3.1.9"
+  }
+}
