@@ -25,7 +25,7 @@ const Login = () => {
         });
         const token = response.data.token;
         localStorage.setItem('authToken', token); // Store token in localStorage
-        console.log('User logged in successfully', response.data);
+
         // Redirect user to homepage or dashboard
       } catch (error) {
         console.log('User login failed', error);

@@ -6,6 +6,7 @@ const Auth = () => {
   const [isLogin, setIsLogin] = useState(true); // To toggle between Login and Signup
   const navigate = useNavigate(); // Initialize useNavigate
   const host = config.backendURL
+  const [loading, setLoading] = useState(false);
   // Signup Form Data
   const [signupData, setSignupData] = useState({
     name: '',
@@ -57,7 +58,7 @@ const Auth = () => {
       setTimeout(() => {
         navigate('/home'); // Navigate to Home after successful login
       }, 100);
-      setSignUpError('Wait...');
+   
       setTimeout(() => {
         setSignUpError('')
       }, 1500);
@@ -74,6 +75,7 @@ const Auth = () => {
   // Login form submit
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await axios.post(`${host}/user/login`, loginData);
      
@@ -82,14 +84,13 @@ const Auth = () => {
         localStorage.setItem("userEmail", loginData.email); // Store email in localStorage
         setTimeout(() => {
           navigate('/home'); // Navigate to Home after successful login
-        }, 100);
-   
+        }, 400);
+        
     } catch (error) {
-      setLoginError('Invalid credentials. Please check your email and password or sign up if you don&apos;t have an account.');
-      setTimeout(() => {
-        setLoginError('')
-      }, 2000);
+      setLoginError('Invalid credentials. Please check your email and password or sign up if you don\'t have an account.');
       console.log('Login failed', error);
+    } finally {
+      setLoading(false); // Set loading back to false
     }
   };
 
@@ -148,9 +149,10 @@ const Auth = () => {
             </div>
             <button
               type="submit"
-              className="w-full  bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors"
+              className={`w-full bg-purple-600 text-white py-2 rounded-lg transition-colors hover:bg-purple-700 ${loading ? 'opacity-80 cursor-wait' : ''}`}
+              disabled={loading}
             >
-              Login
+              {loading ? 'Wait...' : 'Login'}
             </button>
           </form>
         ) : (
@@ -206,9 +208,10 @@ const Auth = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-purple-500 text-white py-2 rounded-lg hover:bg-purple-600 transition-colors"
+              className={`w-full bg-purple-500 text-white py-2 rounded-lg hover:bg-purple-600 transition-colors ${loading ? 'opacity-80 cursor-wait' : ''}`}
+              disabled={loading}
             >
-              Sign Up
+              {loading ? 'Wait...' : 'Sign Up'}
             </button>
           </form>
         )}
